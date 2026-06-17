@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - JJMB</title>
+    <link rel="icon" href="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/background-image-index.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            color: #fff;
+        }
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 70px; width: auto; display: block; border-radius: 15px; }
+        nav { display: flex; gap: 40px; }
+        nav a { color: white; text-decoration: none; font-size: 20px; transition: opacity 0.3s ease; }
+        nav a:hover { opacity: 0.10; }
+
+        main { flex: 1; padding: 60px 80px; }
+        .page-title { text-align: center; margin-bottom: 30px; }
+        .page-title h1 { font-size: 48px; margin-bottom: 8px; }
+        .page-title p { opacity: 0.9; }
+
+        /* Slideshow styles */
+        .projects-slideshow { max-width: 980px; margin: 30px auto 0; position: relative; opacity: 1; }
+        .slides { position: relative; }
+        .slide {
+            display: none;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 8px 26px rgba(0,0,0,0.50);
+            min-height: 450px;
+        }
+        .slide.active { display: block; }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0 10px;
+        }
+        .project-images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+            cursor: zoom-in;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            transform-origin: center center;
+        }
+        .project-images img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 18px 42px rgba(0,0,0,0.35);
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.88);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .image-modal.active {
+            display: flex;
+        }
+        .image-modal img {
+            max-width: 95vw;
+            max-height: 95vh;
+            width: auto;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+        }
+        .image-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 26px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+
+        .slide h2 { font-size: 28px; margin-bottom: 12px; }
+        .desc { font-size: 16px; line-height: 1.6; opacity: 0.95; }
+
+        .slide-footer {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 18px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.04);
+            font-size: 14px; opacity: 0.9;
+        }
+
+        .nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.35); color: #fff; border: none; width: 44px; height: 44px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.18s ease;
+        }
+        .nav:hover { background: rgba(0,0,0,0.5); }
+        .nav.prev { left: -22px; }
+        .nav.next { right: -22px; }
+
+        .dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; }
+        .dot.active { background: #fff; }
+
+        @media (max-width: 520px) {
+            header { padding: 16px 20px; }
+            main { padding: 30px 18px; }
+            .page-title h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body data-page="projects">
+    <header>
+        <div class="logo">
+            <img id="site-logo" src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="projects-slideshow" aria-label="Projects slideshow" data-reveal>
+            <div class="slides">
+                <div class="slide active" data-index="0">
+                    <h2>Excel and Google Sheet Sales Tracker</h2>
+                    <p class="desc">Project Description: An automated Excel and Google Sheet solution for tracking sales data and generating reports.</p>
+                    <div class="project-images" aria-label="Project 1 image gallery">
+                        <!-- Replace src values with your own image URLs -->
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_1.png?raw=true" alt="Project 1 Image 1">
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_2.png?raw=true" alt="Project 1 Image 2">
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_3.png?raw=true" alt="Project 1 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+1+Image+4" alt="Project 1 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+1+Image+5" alt="Project 1 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Huswell Trading</div><div class="date">Jan 2024</div></div>
+                </div>
+
+                <div class="slide" data-index="1">
+                    <h2>Project Name 2</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-images" aria-label="Project 2 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+1" alt="Project 2 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+2" alt="Project 2 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+3" alt="Project 2 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+4" alt="Project 2 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+5" alt="Project 2 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Client B</div><div class="date">Mar 2024</div></div>
+                </div>
+
+                <div class="slide" data-index="2">
+                    <h2>Project Name 3</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-images" aria-label="Project 3 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+1" alt="Project 3 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+2" alt="Project 3 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+3" alt="Project 3 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+4" alt="Project 3 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+5" alt="Project 3 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Client C</div><div class="date">Jun 2024</div></div>
+                </div>
+
+                <div class="slide" data-index="3">
+                    <h2>Project Name 4</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-images" aria-label="Project 4 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+1" alt="Project 4 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+2" alt="Project 4 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+3" alt="Project 4 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+4" alt="Project 4 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+5" alt="Project 4 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Client D</div><div class="date">Sep 2024</div></div>
+                </div>
+
+                <div class="slide" data-index="4">
+                    <h2>Project Name 5</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-images" aria-label="Project 5 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+1" alt="Project 5 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+2" alt="Project 5 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+3" alt="Project 5 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+4" alt="Project 5 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+5" alt="Project 5 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Client E</div><div class="date">Sep 2024</div></div>
+                </div>
+
+                <div class="slide" data-index="5">
+                    <h2>Project Name 6</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-images" aria-label="Project 6 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+1" alt="Project 6 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+2" alt="Project 6 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+3" alt="Project 6 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+4" alt="Project 6 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+5" alt="Project 6 Image 5">
+                    </div>
+                    <div class="slide-footer"><div class="meta">Client: Client F</div><div class="date">Sep 2024</div></div>
+                </div>
+            </div>
+
+            <button class="nav prev" aria-label="Previous slide">&#10094;</button>
+            <button class="nav next" aria-label="Next slide">&#10095;</button>
+
+            <div class="dots" role="tablist">
+                <button class="dot active" data-index="0" aria-label="Show slide 1"></button>
+                <button class="dot" data-index="1" aria-label="Show slide 2"></button>
+                <button class="dot" data-index="2" aria-label="Show slide 3"></button>
+                <button class="dot" data-index="3" aria-label="Show slide 4"></button>
+                <button class="dot" data-index="4" aria-label="Show slide 5"></button>
+                <button class="dot" data-index="5" aria-label="Show slide 6"></button>
+            </div>
+        </div>
+    </main>
+
+    <div class="image-modal" role="dialog" aria-modal="true" aria-label="Image zoom view">
+        <button class="close-btn" aria-label="Close image zoom">&times;</button>
+        <img src="" alt="Zoomed project image">
+    </div>
+
+    <script>
+        (function(){
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            const dots = Array.from(document.querySelectorAll('.dot'));
+            const prev = document.querySelector('.nav.prev');
+            const next = document.querySelector('.nav.next');
+            const modal = document.querySelector('.image-modal');
+            const modalImage = modal.querySelector('img');
+            const closeBtn = modal.querySelector('.close-btn');
+            const galleryImages = Array.from(document.querySelectorAll('.project-images img'));
+            let index = 0;
+
+            function updateSlideVisuals() {
+                slides.forEach(slide => {
+                    if (slide.classList.contains('active')) {
+                        slide.style.display = 'block';
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translateY(0)';
+                    } else {
+                        slide.style.display = 'none';
+                        slide.style.opacity = '0';
+                        slide.style.transform = 'translateY(18px)';
+                    }
+                });
+            }
+
+            function show(i){
+                index = (i + slides.length) % slides.length;
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                updateSlideVisuals();
+            }
+
+            prev.addEventListener('click', () => show(index - 1));
+            next.addEventListener('click', () => show(index + 1));
+            dots.forEach(d => d.addEventListener('click', e => show(Number(e.currentTarget.dataset.index))));
+
+            // keyboard
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') show(index - 1);
+                if (e.key === 'ArrowRight') show(index + 1);
+                if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+            });
+
+            updateSlideVisuals();
+
+            // optional autoplay (uncomment to enable)
+            // let autoplay = setInterval(() => show(index + 1), 6000);
+            // document.querySelector('.projects-slideshow').addEventListener('mouseenter', () => clearInterval(autoplay));
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImage.src = img.dataset.full || img.src;
+                    modalImage.alt = img.alt || 'Full project image';
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) closeModal();
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                modalImage.src = '';
+            }
+        })();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
