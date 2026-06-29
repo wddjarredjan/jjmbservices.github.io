@@ -118,6 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
         pulseLogo();
         animateLinks();
         initAboutCards();
+        initAboutInteractions();
+        revealOnScroll();
+    };
+
+    const initAboutInteractions = () => {
+        const cards = document.querySelectorAll('.interactive-card');
+        cards.forEach(card => {
+            card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+
+            card.addEventListener('mousemove', (event) => {
+                const rect = card.getBoundingClientRect();
+                const x = (event.clientX - rect.left - rect.width / 2) / 18;
+                const y = (event.clientY - rect.top - rect.height / 2) / 18;
+                card.style.transform = `perspective(700px) rotateX(${ -y }deg) rotateY(${ x }deg) translateZ(0)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
     };
 
     const initProjects = () => {
