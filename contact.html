@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact JJMB for web development, digital portfolio projects, data entry support, and IT collaboration opportunities.">
+    <meta name="keywords" content="contact JJMB, web developer, IT collaboration, digital portfolio, email, phone, LinkedIn">
+    <meta name="author" content="Jarred John Madel Abernal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jjmbservices.github.io/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact - JJMB">
+    <meta property="og:description" content="Contact JJMB for web development, digital portfolio projects, data entry support, and IT collaboration opportunities.">
+    <meta property="og:url" content="https://jjmbservices.github.io/contact.html">
+    <meta property="og:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <meta property="og:image:alt" content="JJMB contact page logo">
+    <meta property="og:site_name" content="JJMB Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact - JJMB">
+    <meta name="twitter:description" content="Contact JJMB for web development, digital portfolio projects, data entry support, and IT collaboration opportunities.">
+    <meta name="twitter:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <title>Contact - JJMB</title>
+    <link rel="icon" href="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" type="image/png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://jjmbservices.github.io/contact.html",
+      "name": "Contact - JJMB",
+      "description": "Contact JJMB for web development, digital portfolio projects, data entry support, and IT collaboration opportunities."
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/background-image-index.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 70px; width: auto; display: block; border-radius: 15px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px 56px;
+        }
+
+        .contact-shell {
+            width: min(1120px, 100%);
+            display: grid;
+            gap: 24px;
+        }
+
+        .hero-card {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            padding: clamp(24px, 3vw, 40px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(100, 210, 255, 0.16), transparent 34%);
+            pointer-events: none;
+        }
+
+        .hero-copy,
+        .status-card {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+
+        .hero-copy p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 640px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 18px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(135deg, #4b7cff, #64d2ff);
+            box-shadow: 0 10px 24px rgba(75, 124, 255, 0.3);
+        }
+
+        .btn-secondary {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #eef5ff;
+            font-size: 0.95rem;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 22px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-self: stretch;
+            justify-content: center;
+        }
+
+        .status-card strong {
+            font-size: 1.15rem;
+        }
+
+        .status-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .status-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .status-list li {
+            position: relative;
+            padding-left: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .status-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #64d2ff;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 22px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            min-height: 184px;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.28);
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.22);
+        }
+
+        .contact-card .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 18px;
+        }
+
+        .contact-card strong {
+            font-size: 1.05rem;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .card-link {
+            margin-top: auto;
+            color: #64d2ff;
+            font-weight: 600;
+        }
+
+        .copy-feedback {
+            display: inline-block;
+            margin-left: 6px;
+            color: #aef2c0;
+            font-size: 0.95rem;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        [data-reveal] {
+            animation: fadeInUp 0.7s ease both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 16px 20px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-copy h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body data-page="contact">
+    <header>
+        <div class="logo">
+            <img id="site-logo" src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-shell" data-reveal>
+            <div class="hero-card">
+                <div class="hero-copy">
+                    <div class="eyebrow">Let&apos;s connect</div>
+                    <h1>Ready to build something polished, useful, and memorable?</h1>
+                    <p>I&apos;m available for web projects, automation solutions, digital support work, and thoughtful collaborations. Whether you need a fresh site or a smarter workflow, I’d be glad to help.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="mailto:jarredjohnmadelabernal@gmail.com">Email me</a>
+                        <button class="btn btn-secondary" type="button" data-copy-email>Copy Email</button>
+                        <span class="copy-feedback" aria-live="polite"></span>
+                    </div>
+                    <div class="hero-meta">
+                        <div class="meta-pill">⚡ Available for new opportunities</div>
+                        <div class="meta-pill">⏱️ Usually replies within 24 hours</div>
+                    </div>
+                </div>
+
+                <div class="status-card">
+                    <strong>Current focus</strong>
+                    <p>Website design, web development, spreadsheet automation, and clean data workflows.</p>
+                    <ul class="status-list">
+                        <li>Responsive web interfaces</li>
+                        <li>Excel and Google Sheets automation</li>
+                        <li>Professional digital support and collaboration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <a class="contact-card" href="tel:+639060351799">
+                    <span class="icon">📞</span>
+                    <strong>Phone</strong>
+                    <p>Prefer a quick call? I&apos;m happy to chat through project ideas or availability.</p>
+                    <span class="card-link">+63 906-035-1799 ↗</span>
+                </a>
+
+                <a class="contact-card" href="mailto:jarredjohnmadelabernal@gmail.com">
+                    <span class="icon">📧</span>
+                    <strong>Email</strong>
+                    <p>Best for detailed inquiries, questions, or project briefs.</p>
+                    <span class="card-link">jarredjohnmadelabernal@gmail.com ↗</span>
+                </a>
+
+                <a class="contact-card" href="https://www.facebook.com/jarredjohnmadelabernal" target="_blank" rel="noreferrer">
+                    <span class="icon">💬</span>
+                    <strong>Facebook</strong>
+                    <p>Open for casual conversations, quick updates, and messaging.</p>
+                    <span class="card-link">Messenger / Facebook ↗</span>
+                </a>
+
+                <a class="contact-card" href="https://www.linkedin.com/in/jarredjohnmadelabernal" target="_blank" rel="noreferrer">
+                    <span class="icon">🔗</span>
+                    <strong>LinkedIn</strong>
+                    <p>Great for professional networking, collaborations, and opportunities.</p>
+                    <span class="card-link">View LinkedIn profile ↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const copyButton = document.querySelector('[data-copy-email]');
+            const feedback = document.querySelector('.copy-feedback');
+
+            if (!copyButton || !feedback) return;
+
+            copyButton.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText('jarredjohnmadelabernal@gmail.com');
+                    feedback.textContent = 'Email copied to clipboard';
+                    feedback.classList.add('show');
+                    setTimeout(() => feedback.classList.remove('show'), 1800);
+                } catch (error) {
+                    feedback.textContent = 'Copy failed — please email manually';
+                    feedback.classList.add('show');
+                    setTimeout(() => feedback.classList.remove('show'), 1800);
+                }
+            });
+        })();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

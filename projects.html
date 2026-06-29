@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse JJMB's project portfolio featuring web development work, project case studies, and digital solutions.">
+    <meta name="keywords" content="JJMB projects, portfolio, web apps, case studies, digital design, Excel automation, Google Sheets">
+    <meta name="author" content="Jarred John Madel Abernal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jjmbservices.github.io/projects.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects - JJMB">
+    <meta property="og:description" content="Browse JJMB's project portfolio featuring web development work, project case studies, and digital solutions.">
+    <meta property="og:url" content="https://jjmbservices.github.io/projects.html">
+    <meta property="og:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <meta property="og:image:alt" content="JJMB projects page logo">
+    <meta property="og:site_name" content="JJMB Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects - JJMB">
+    <meta name="twitter:description" content="Browse JJMB's project portfolio featuring web development work, project case studies, and digital solutions.">
+    <meta name="twitter:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <title>Projects - JJMB</title>
+    <link rel="icon" href="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" type="image/png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://jjmbservices.github.io/projects.html",
+      "name": "Projects - JJMB",
+      "description": "Browse JJMB's project portfolio featuring web development work, project case studies, and digital solutions."
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/background-image-index.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            color: #fff;
+        }
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 70px; width: auto; display: block; border-radius: 15px; }
+        nav { display: flex; gap: 40px; }
+        nav a { color: white; text-decoration: none; font-size: 20px; transition: opacity 0.3s ease; }
+        nav a:hover { opacity: 0.10; }
+
+        main { flex: 1; padding: clamp(40px, 6vw, 80px); }
+        .page-title { text-align: center; margin: 0 auto 26px; max-width: 840px; }
+        .page-title h1 { font-size: clamp(2.8rem, 4vw, 4.5rem); margin-bottom: 12px; letter-spacing: -0.03em; }
+        .page-title p { font-size: 1.05rem; opacity: 0.9; line-height: 1.8; margin-bottom: 18px; }
+
+        .project-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+        .project-stats .stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 18px; }
+        .project-stats strong { display: block; font-size: 2rem; margin-bottom: 6px; }
+        .project-stats span { color: rgba(255,255,255,0.86); }
+
+        .filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 24px auto 0; max-width: 880px; }
+        .filter-chip { padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+        .filter-chip:hover, .filter-chip.active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+
+        .projects-slideshow { max-width: 980px; margin: 30px auto 0; position: relative; opacity: 1; padding: 22px; border-radius: 26px; background: rgba(10, 15, 30, 0.42); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
+        .projects-slideshow::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 28%), radial-gradient(circle at bottom right, rgba(100, 200, 255, 0.08), transparent 22%); pointer-events: none; }
+        .slides { position: relative; z-index: 1; }
+        .slide { display: none; background: rgba(255,255,255,0.08); border-radius: 22px; padding: 28px; box-shadow: 0 16px 40px rgba(0,0,0,0.35); min-height: 420px; transition: transform 0.35s ease, opacity 0.35s ease; transform: translateY(18px); opacity: 0; }
+        .slide.active { display: block; transform: translateY(0); opacity: 1; }
+
+        .project-details { display: grid; gap: 18px; margin-top: 18px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .project-tag { padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.12); color: #f5f7ff; font-size: 0.9rem; }
+        .project-highlights { display: grid; gap: 8px; list-style: none; padding: 0; margin: 0; }
+        .project-highlights li { position: relative; padding-left: 18px; color: rgba(255,255,255,0.92); line-height: 1.7; }
+        .project-highlights li::before { content: "•"; position: absolute; left: 0; color: #64d2ff; }
+
+        .project-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0 10px; }
+        .project-images img { height: 170px; width: 100%; object-fit: cover; border-radius: 12px; cursor: zoom-in; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+        .project-images img:hover { transform: scale(1.06); box-shadow: 0 18px 48px rgba(0,0,0,0.45); z-index: 3; }
+
+        /* Side navigation arrows */
+        .nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(0,0,0,0.36); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.18s ease, transform 0.12s ease; }
+        .nav:hover { background: rgba(0,0,0,0.52); transform: translateY(-50%) scale(1.03); }
+        .nav.prev { left: 12px; }
+        .nav.next { right: 12px; }
+
+        /* Inline image expansion: expand clicked image inside its gallery */
+        .project-images.expanded { grid-template-columns: 1fr; }
+        .project-images.expanded img { display: none; }
+        .project-images.expanded img.expanded { display: block; width: 100%; height: auto; object-fit: contain; cursor: zoom-out; transition: transform 0.35s ease, box-shadow 0.35s ease; box-shadow: 0 30px 80px rgba(0,0,0,0.6); border-radius: 12px; }
+
+        .slide h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px; }
+        .desc { font-size: 1rem; line-height: 1.7; opacity: 0.95; }
+
+        .slide-footer { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; opacity: 0.92; }
+        .project-meta { display: flex; gap: 12px; flex-wrap: wrap; }
+        .project-role, .project-date { background: rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 999px; }
+
+    </style>
+</head>
+<body data-page="projects">
+    <header>
+        <div class="logo">
+            <img id="site-logo" src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-title" data-reveal>
+            <h1>Projects Portfolio</h1>
+            <p>Explore recent work focused on web interfaces, automation tools, and digital support solutions. Use the category filters to highlight the projects most relevant to your needs.</p>
+            <div class="project-stats">
+                <div class="stat"><strong>6</strong><span>Projects completed</span></div>
+                <div class="stat"><strong>4</strong><span>Client solutions</span></div>
+                <div class="stat"><strong>100%</strong><span>Growth in polish</span></div>
+            </div>
+        </div>
+        <div class="filter-row" data-reveal>
+            <button class="filter-chip active" data-filter="all">All Projects</button>
+            <button class="filter-chip" data-filter="web">Web & UI</button>
+            <button class="filter-chip" data-filter="automation">Automation</button>
+            <button class="filter-chip" data-filter="data">Data & Support</button>
+        </div>
+        <div class="projects-slideshow" aria-label="Projects slideshow" data-reveal>
+            <div class="slides">
+                <div class="slide active" data-index="0" data-category="automation">
+                    <h2>Excel and Google Sheet Sales Tracker</h2>
+                    <p class="desc">Project Description: An automated Excel and Google Sheet solution for tracking sales data and generating reports.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Google Sheets</span>
+                            <span class="project-tag">Reporting</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Built a dashboard for fast sales insights.</li>
+                            <li>Automated report generation for daily summary views.</li>
+                            <li>Improved accuracy with structured data entry tools.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 1 image gallery">
+                        <!-- Replace src values with your own image URLs -->
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_1.png?raw=true" alt="Project 1 Image 1">
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_2.png?raw=true" alt="Project 1 Image 2">
+                        <img src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/ProjectA_3.png?raw=true" alt="Project 1 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+1+Image+4" alt="Project 1 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+1+Image+5" alt="Project 1 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Huswell Trading</span><span class="project-date">Jan 2024</span></div></div>
+                </div>
+
+                <div class="slide" data-index="1" data-category="web">
+                    <h2>Project Name 2</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Web Design</span>
+                            <span class="project-tag">UI</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Designed an intuitive user interface with clear navigation.</li>
+                            <li>Showcased responsive layouts across desktop and mobile.</li>
+                            <li>Focused on polished visuals and fast interactions.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 2 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+1" alt="Project 2 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+2" alt="Project 2 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+3" alt="Project 2 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+4" alt="Project 2 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+2+Image+5" alt="Project 2 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Client B</span><span class="project-date">Mar 2024</span></div></div>
+                </div>
+
+                <div class="slide" data-index="2" data-category="web">
+                    <h2>Project Name 3</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Web App</span>
+                            <span class="project-tag">UX</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Developed fresh layouts that guide user attention.</li>
+                            <li>Built interactions to support easy information access.</li>
+                            <li>Focused on usability for both desktop and mobile users.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 3 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+1" alt="Project 3 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+2" alt="Project 3 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+3" alt="Project 3 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+4" alt="Project 3 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+3+Image+5" alt="Project 3 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Client C</span><span class="project-date">Jun 2024</span></div></div>
+                </div>
+
+                <div class="slide" data-index="3" data-category="data">
+                    <h2>Project Name 4</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Data Support</span>
+                            <span class="project-tag">Process</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Streamlined data entry workflows for faster turnaround.</li>
+                            <li>Standardized reporting formats for consistent delivery.</li>
+                            <li>Provided documentation to reduce manual errors.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 4 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+1" alt="Project 4 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+2" alt="Project 4 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+3" alt="Project 4 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+4" alt="Project 4 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+4+Image+5" alt="Project 4 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Client D</span><span class="project-date">Sep 2024</span></div></div>
+                </div>
+
+                <div class="slide" data-index="4" data-category="web">
+                    <h2>Project Name 5</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Website</span>
+                            <span class="project-tag">Visual Design</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Created a polished visual identity for a professional brand.</li>
+                            <li>Used consistent spacing and typography for readability.</li>
+                            <li>Delivered a smooth experience across all screens.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 5 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+1" alt="Project 5 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+2" alt="Project 5 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+3" alt="Project 5 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+4" alt="Project 5 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+5+Image+5" alt="Project 5 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Client E</span><span class="project-date">Sep 2024</span></div></div>
+                </div>
+
+                <div class="slide" data-index="5" data-category="automation">
+                    <h2>Project Name 6</h2>
+                    <p class="desc">Project Description: Brief description of the project's scope, technologies used, and the outcome.</p>
+                    <div class="project-details">
+                        <div class="project-tags">
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Workflow</span>
+                        </div>
+                        <ul class="project-highlights">
+                            <li>Enhanced project efficiency with smarter data automation.</li>
+                            <li>Reduced repetitive manual steps for the team.</li>
+                            <li>Delivered faster results with a cleaner process flow.</li>
+                        </ul>
+                    </div>
+                    <div class="project-images" aria-label="Project 6 image gallery">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+1" alt="Project 6 Image 1">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+2" alt="Project 6 Image 2">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+3" alt="Project 6 Image 3">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+4" alt="Project 6 Image 4">
+                        <img src="https://via.placeholder.com/320x180?text=Project+6+Image+5" alt="Project 6 Image 5">
+                    </div>
+                        <div class="slide-footer"><div class="project-meta"><span class="project-role">Client: Client F</span><span class="project-date">Sep 2024</span></div></div>
+                </div>
+            </div>
+
+            <button class="nav prev" aria-label="Previous slide">&#10094;</button>
+            <button class="nav next" aria-label="Next slide">&#10095;</button>
+
+            <!-- dots removed: navigation uses side arrows now -->
+        </div>
+    </main>
+
+    <!-- Inline expansion replaces overlay modal; expanded image is handled inside each .project-images -->
+
+    <script>
+        (function(){
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            const prev = document.querySelector('.nav.prev');
+            const next = document.querySelector('.nav.next');
+            const galleryImages = Array.from(document.querySelectorAll('.project-images img'));
+            const filterButtons = Array.from(document.querySelectorAll('.filter-chip'));
+            let activeFilter = 'all';
+            let index = 0;
+
+            function updateSlideVisuals() {
+                slides.forEach(slide => {
+                    if (slide.classList.contains('active')) {
+                        slide.style.display = 'block';
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translateY(0)';
+                    } else {
+                        slide.style.display = 'none';
+                        slide.style.opacity = '0';
+                        slide.style.transform = 'translateY(18px)';
+                    }
+                });
+            }
+
+            function show(i){
+                index = (i + slides.length) % slides.length;
+                slides.forEach(s => s.classList.remove('active'));
+                slides[index].classList.add('active');
+                updateSlideVisuals();
+            }
+
+            const getNextVisibleIndex = (start, direction) => {
+                let candidate = (start + direction + slides.length) % slides.length;
+                for (let i = 0; i < slides.length; i++, candidate = (candidate + direction + slides.length) % slides.length) {
+                    if (activeFilter === 'all' || slides[candidate].dataset.category === activeFilter) {
+                        return candidate;
+                    }
+                }
+                return start;
+            };
+
+            function applyFilter(category) {
+                activeFilter = category;
+                filterButtons.forEach(button => button.classList.toggle('active', button.dataset.filter === category));
+                let visibleIndex = index;
+                if (category !== 'all' && slides[index].dataset.category !== category) {
+                    visibleIndex = getNextVisibleIndex(index, 1);
+                }
+                show(visibleIndex);
+            }
+
+            prev.addEventListener('click', () => show(getNextVisibleIndex(index, -1)));
+            next.addEventListener('click', () => show(getNextVisibleIndex(index, 1)));
+
+            // keyboard
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') show(index - 1);
+                if (e.key === 'ArrowRight') show(index + 1);
+                if (e.key === 'Escape') collapseExpanded();
+            });
+
+            updateSlideVisuals();
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => applyFilter(button.dataset.filter));
+            });
+
+            // optional autoplay (uncomment to enable)
+            // let autoplay = setInterval(() => show(index + 1), 6000);
+            // document.querySelector('.projects-slideshow').addEventListener('mouseenter', () => clearInterval(autoplay));
+
+            function collapseExpanded() {
+                document.querySelectorAll('.project-images').forEach(g => g.classList.remove('expanded'));
+                document.querySelectorAll('.project-images img.expanded').forEach(i => i.classList.remove('expanded'));
+                document.body.style.overflow = '';
+            }
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const gallery = img.closest('.project-images');
+                    const isExpanded = img.classList.contains('expanded');
+                    if (isExpanded) {
+                        collapseExpanded();
+                        return;
+                    }
+                    collapseExpanded();
+                    gallery.classList.add('expanded');
+                    img.classList.add('expanded');
+                    img.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+
+            // click outside an expanded gallery closes it
+            document.addEventListener('click', (e) => {
+                if (document.querySelector('.project-images.expanded') && !e.target.closest('.project-images')) {
+                    collapseExpanded();
+                }
+            });
+
+            // keyboard support: escape to collapse
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') collapseExpanded();
+            });
+        })();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

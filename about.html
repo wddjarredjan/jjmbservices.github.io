@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Jarred John Madel Abernal's education, skills, experience, and professional goals in IT and web development.">
+    <meta name="keywords" content="About JJMB, IT student, web developer, data entry specialist, administrative support, portfolio about page">
+    <meta name="author" content="Jarred John Madel Abernal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jjmbservices.github.io/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About - JJMB">
+    <meta property="og:description" content="Learn about Jarred John Madel Abernal's education, skills, experience, and professional goals in IT and web development.">
+    <meta property="og:url" content="https://jjmbservices.github.io/about.html">
+    <meta property="og:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <meta property="og:image:alt" content="JJMB about page logo">
+    <meta property="og:site_name" content="JJMB Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About - JJMB">
+    <meta name="twitter:description" content="Learn about Jarred John Madel Abernal's education, skills, experience, and professional goals in IT and web development.">
+    <meta name="twitter:image" content="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true">
+    <title>About - JJMB</title>
+    <link rel="icon" href="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" type="image/png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://jjmbservices.github.io/about.html",
+      "name": "About - JJMB",
+      "description": "Learn about Jarred John Madel Abernal's education, skills, experience, and professional goals in IT and web development."
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/background-image-index.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 70px; width: auto; display: block; border-radius: 15px; }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.10;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .about-content {
+            text-align: center;
+            color: white;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .about-content h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: 18px;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            line-height: 1.75;
+            margin-bottom: 15px;
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin: 40px 0 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 22px;
+            padding: 28px;
+            backdrop-filter: blur(14px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            text-align: left;
+        }
+
+        .card h2 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+            border-color: rgba(255, 255, 255, 0.32);
+        }
+
+        .skills-section {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .skills-section h2 {
+            margin-bottom: 16px;
+            font-size: 1.75rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-chip {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+            color: white;
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .skill-chip:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.24);
+        }
+
+        .cta-row {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .cta-row p {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.32);
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            padding: 22px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            text-align: left;
+        }
+
+        .timeline-item span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body data-page="about">
+    <header>
+        <div class="logo">
+            <img id="site-logo" src="https://github.com/wddjarredjan/jjmbservices.github.io/blob/main/jjmb.png?raw=true" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-content" data-reveal>
+            <h1>About Me</h1>
+            <p>Welcome to my website portfolio. I am 27 years old and currently an undergraduate student at Our Lady of Fatima University.</p>
+            <p>I am studying Information Technology while gaining hands-on experience in web development, data entry, and administrative support.</p>
+            <p>Explore my story below and reach out if you'd like to collaborate or learn more.</p>
+
+            <div class="about-grid">
+                <article class="card interactive-card" data-reveal>
+                    <h2>Education</h2>
+                    <p>Studying IT at Our Lady of Fatima University with a focus on practical web development and digital solutions.</p>
+                </article>
+                <article class="card interactive-card" data-reveal>
+                    <h2>Experience</h2>
+                    <p>Completed training in Web Development, Data Entry, and Administrative Support with live projects and client work.</p>
+                </article>
+                <article class="card interactive-card" data-reveal>
+                    <h2>Creative Energy</h2>
+                    <p>I enjoy designing clean interfaces, learning new tools, and building work that looks polished and feels useful.</p>
+                </article>
+            </div>
+
+            <section class="skills-section" data-reveal>
+                <h2>Skills & Tools</h2>
+                <div class="skills-list">
+                    <span class="skill-chip">HTML</span>
+                    <span class="skill-chip">CSS</span>
+                    <span class="skill-chip">JavaScript</span>
+                    <span class="skill-chip">Web Design</span>
+                    <span class="skill-chip">Data Entry</span>
+                </div>
+            </section>
+
+            <section class="timeline" data-reveal>
+                <div class="timeline-item">
+                    <span>2024</span>
+                    <p>Started building polished portfolio pages while studying IT and practicing web development workflows.</p>
+                </div>
+                <div class="timeline-item">
+                    <span>2025</span>
+                    <p>Expanded my skills with practical training in data entry, content support, and online tools.</p>
+                </div>
+                <div class="timeline-item">
+                    <span>Today</span>
+                    <p>Working on projects that combine clear design, reliable code, and thoughtful digital experiences.</p>
+                </div>
+            </section>
+
+            <div class="cta-row" data-reveal>
+                <p>Ready to turn ideas into a strong online presence? I’m available to collaborate on websites, portfolio updates, and practical digital projects.</p>
+                <a class="button" href="contact.html">Contact Me</a>
+            </div>
+        </div>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
